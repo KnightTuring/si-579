@@ -1,0 +1,45 @@
+h1{
+    font-family: Georgia, 'Times New Roman', Times, sans-serif;
+    text-align: center;
+    color: blue;
+}
+
+#main-nav-menu {
+    background-color: #2196f3;
+    padding: 5px;
+    margin: 10px;
+}
+
+header nav ul li {
+    display: inline;
+    margin: 10px;
+    padding: 5px;
+    border: 2px  solid white;
+}
+
+header nav ul li a{
+  color: white;
+}
+
+.active {
+    color: #2196f3;
+    background-color: white;
+}
+
+@keyframes headerAnimation {
+    from{text-shadow: 0px 0px #558abb;}
+    to{text-shadow: 1.8px 1.8px #558abb;}
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    animation-name: headerAnimation;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+p {
+    font-family: 'Quicksand', sans-serif;
+}
