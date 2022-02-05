@@ -26,10 +26,10 @@ function changeColor(){
    const span = document.querySelector("#color-name")
     if(newColor){
         //change the background color using JS
-        colorBlock.style.backgroundColor = "#0000FF"
+        colorBlock.style.backgroundColor = "#FFFF00"
 
         //Change the text of the color using the span id color-name
-        span.textContent = "#0000FF"
+        span.textContent = "##FFFF00"
 
     }
     else{
