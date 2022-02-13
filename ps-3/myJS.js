@@ -29,7 +29,7 @@ function changeColor(){
         colorBlock.style.backgroundColor = "#FFFF00"
 
         //Change the text of the color using the span id color-name
-        span.textContent = "##FFFF00"
+        span.textContent = "#FFFF00"
 
     }
     else{
