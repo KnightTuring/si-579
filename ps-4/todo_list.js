@@ -1,6 +1,7 @@
 var counter = 0;
 addTask("Learn to wrap gifts", 1639944400000)
 addTask("Buy milk")
+clearInputElement(document.querySelector("#task_description_input"), document.querySelector("#duedate_input"), document.querySelector("#duetime_input"))
 
 /**
  * This functions adds a new task.
@@ -22,9 +23,6 @@ function addTask(description, dueTime) {
     liStr = liStr.replace('$(description)$', description)
     if(dueTime) {
         var date = new Date(dueTime)
-        var hours = date.getHours()
-        var minutes = date.getMinutes()
-        var seconds = date.getSeconds()
         liStr = liStr.replace('$due$', 'due ' + date.toDateString() + " " + date.toLocaleTimeString())
     } else {
         liStr = liStr.replace('$due$', '')
