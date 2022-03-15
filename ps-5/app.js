@@ -118,14 +118,12 @@ savedWords.innerHTML += "<p>(None)</p>"
 
 // Add event listeners here.
 showRhymesButton.addEventListener('click', () => {
-    outputDescription.innerHTML = `<h2>Words that rhyme with ${wordInput.value}</h2>`
     wordOutput.innerHTML = "<p>.....loading</p>"
     datamuseRequest(getDatamuseRhymeUrl(), displayRhymingWords)
 
 })
 
 showSynonymsButton.addEventListener('click', () => {
-    outputDescription.innerHTML = `<h2>Words with a similar meaning to ${wordInput.value}</h2>`
     wordOutput.innerHTML = "<p>.....loading</p>"
     datamuseRequest(getDatamuseSimilarToUrl(), displaySimilarWords)
 })
@@ -142,24 +140,22 @@ document.addEventListener('click', (e) => {
 // Add additional functions/callbacks here.
 function displayRhymingWords(rhymingData) {
     wordOutput.innerHTML = ""
+    outputDescription.innerHTML = ""
     wordOutputHtml = ""
     console.log("R"+rhymingData)
     groupedWords = groupBy(rhymingData, 'numSyllables')
     if( Object.keys(groupedWords).length === 0) {
         wordOutput.innerHTML = "<h3>No results</h3>"
     } else {
+        outputDescription.innerHTML = `<h2>Words that rhyme with ${wordInput.value}</h2>`
         console.log(groupedWords)
         for(key in groupedWords) {
             console.log("Key is "+key)
             wordOutputHtml += `<h3>Syllables: ${key}</h3>`
-            //wordOutput.innerHTML += `<h3>Syllables: ${key}</h3>`
             allSyllableWords = groupedWords[key]
-            //wordOutput.innerHTML += "<ul>"
             wordOutputHtml += "<ul>"
             for(wordKey in allSyllableWords) {
                 wordData = allSyllableWords[wordKey]
-                //wordOutput.innerHTML += `<li>${wordData['word']}</li>`
-                
                 wordOutputHtml += `<li>${wordData['word']}<input class="btn btn-outline-success save" type="button" value="Save" role="button"></li>`
             }
             //wordOutput.innerHTML += "</ul>"
@@ -172,21 +168,24 @@ function displayRhymingWords(rhymingData) {
 
 function displaySimilarWords(similarData) {
     wordOutput.innerHTML = ""
+    outputDescription.innerHTML = ""
     wordOpHtml = ""
     console.log("Similar"+similarData)
     if( Object.keys(similarData).length === 0) {
+        console.log("0 similar results")
         wordOutput.innerHTML = "<h3>No results</h3>"
     } else {
+        outputDescription.innerHTML = `<h2>Words with a similar meaning to ${wordInput.value}</h2>`
         console.log("Synonyms data"+similarData)
         wordOpHtml += "<ul>"
         for(index in similarData) {
             console.log("Considering ", similarData[index])
             similarWordData = similarData[index]
-            wordOpHtml += `<li>${similarWordData['word']}<button type="button" class="btn btn-outline-success save">Save</button></li>`
+            wordOpHtml += `<li>${similarWordData['word']}<input class="btn btn-outline-success save" type="button" value="Save" role="button"></li>`
         }
         wordOpHtml += "</ul>"
+        wordOutput.innerHTML = wordOpHtml
     }
-    wordOutput.innerHTML = wordOpHtml
 }
 
 
